@@ -158,19 +158,19 @@ def coursesSingel(id):
 def compare(id):
 
     if id == 1: #doc
-        doc_statement = "SELECT prog_id, prog_name, prog_duration FROM Programme WHERE lvl_id = 1"
+        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 1"
         doc_cursor = db_conn.cursor()
         doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchall()
+        result = doc_cursor.fetchone()
         doc_cursor.close()
 
-        doc_statement1 = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 1"
+        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 1"
         doc_cursor1 = db_conn.cursor()
         doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchone()
+        lvl = doc_cursor1.fetchall()
         doc_cursor1.close()
         
-        return render_template('courses.html', prog=result, name=lvl)
+        return render_template('compare.html', prog=result, name=lvl)
 
     elif id == 2:#master
         doc_statement = "SELECT prog_id, prog_name, prog_duration FROM Programme WHERE lvl_id = 2"
