@@ -211,6 +211,9 @@
                                                     <option value1="/compare/1">Doctor</option>
                                                 </select>
                                             </th>
+                                           {% for row in prog %}
+<a href="{{ url_for('coursesSingel', id=row[0]) }}"><h4>{{row[1]}}</h4></a>
+{% endfor %}
                                             <th width="300px">
                                                 <select class="form-control" id="select2")">
                                                     <option value2="0">-- Select level --</option>
