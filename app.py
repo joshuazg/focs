@@ -215,10 +215,10 @@ def compare(id):
         lvl = doc_cursor1.fetchone()
         doc_cursor1.close()
         
-        return render_template('courses.html', prog=result, name=lvl)
+        return render_template('compare.html', prog=result, name=lvl)
 
     else:
-        return render_template('index.html')
+        return render_template('compare.html')
 
         
 if __name__ == '__main__':
