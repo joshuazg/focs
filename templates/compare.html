@@ -224,9 +224,7 @@
                                             <th>Select Programme</th>
                                             <td>
                                                 <select class="form-control" id="select1" onchange="item1(this.value)">
-                                                    {% for row in prog %}
-                                                      <option value="{{ url_for('coursesSingel', id=row[0]) }}">{{ row[1] }}</option>
-                                                    {% endfor %}
+                                                    <option value="0">-- Select Programme --</option>
                                                 </select>
 
                                                
@@ -260,8 +258,6 @@
                                     </table>
                                    <script>
                                       function changeId(value1, value2) {
-                                         value1 = parseInt(this.options[this.selectedIndex].value);
-                                         value2 = parseInt(document.getElementById('select2').options[this.selectedIndex].value);
                                          window.location.href = `/compare/${value1}/${value2}`;
                                        }
                                   </script>
