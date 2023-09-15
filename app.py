@@ -157,20 +157,22 @@ def coursesSingel(id):
 @app.route('/compare/<int:id>')
 def compare(id):
 
-    if id == 1: #doc
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 1"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchone()
-        doc_cursor.close()
+    if id == 4: #diploma
+    doc_statement = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 4"
+    doc_cursor = db_conn.cursor()
+    doc_cursor.execute(doc_statement)
+    programmes1 = doc_cursor.fetchall()
+    doc_cursor.close()
 
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 1"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchall()
-        doc_cursor1.close()
-        
-        return render_template('compare.html', prog=result, name=lvl)
+    doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 3"
+    doc_cursor1 = db_conn.cursor()
+    doc_cursor1.execute(doc_statement1)
+    programmes2 = doc_cursor1.fetchall()
+    doc_cursor1.close()
+
+    compare_table1 = generate_compare_table(programmes1, [])
+    compare_table2 = generate_compare_table(programmes2, [])
+    return render_template('compare.html', prog=programmes1, compare_table1=compare_table1, compare_table2=compare_table2)
 
     elif id == 2:#master
         doc_statement = "SELECT prog_id, prog_name, prog_duration FROM Programme WHERE lvl_id = 2"
