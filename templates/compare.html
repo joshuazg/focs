@@ -224,8 +224,12 @@
                                             <th>Select Programme</th>
                                             <td>
                                                 <select class="form-control" id="select1" onchange="item1(this.value)">
-                                                    <option value="0">-- Select Programme --</option>
+                                                    {% for row in prog %}
+                                                      <option value="{{ url_for('coursesSingel', id=row[0]) }}">{{ row[1] }}</option>
+                                                    {% endfor %}
                                                 </select>
+
+                                               
                                             </td>
                                             <td>
                                                 <select class="form-control" id="select1" onchange="item1(this.value)">
