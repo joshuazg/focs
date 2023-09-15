@@ -154,8 +154,8 @@ def coursesSingel(id):
         print("Error:", str(e))
         return render_template('error.html', error_message=str(e))
 
-@app.route('/compare/<int:id1>/<int:id2>')
-def compare(id1,id2):
+@app.route('/compare/<int:id1>')
+def compare(id1):
 
     if id1 == 1: #doc
         doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 1"
@@ -203,66 +203,6 @@ def compare(id1,id2):
         return render_template('compare.html', prog=result, name=lvl)
         
     elif id1 == 4: #diploma
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 4"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchall()
-        doc_cursor.close()
-
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 4"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchone()
-        doc_cursor1.close()
-        
-        return render_template('compare.html', prog=result, name=lvl)
-
-    if id2 == 1: #doc
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 1"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchone()
-        doc_cursor.close()
-
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 1"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchall()
-        doc_cursor1.close()
-        
-        return render_template('compare.html', prog=result, name=lvl)
-
-    elif id2 == 2:#master
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 2"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchall()
-        doc_cursor.close()
-
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 2"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchone()
-        doc_cursor1.close()
-        
-        return render_template('compare.html', prog=result, name=lvl)
-
-    elif id2 == 3: #bachelor
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 3"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchall()
-        doc_cursor.close()
-
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 3"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchone()
-        doc_cursor1.close()
-        
-        return render_template('compare.html', prog=result, name=lvl)
-        
-    elif id2 == 4: #diploma
         doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 4"
         doc_cursor = db_conn.cursor()
         doc_cursor.execute(doc_statement)
