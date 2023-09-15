@@ -361,8 +361,16 @@
     <!--====== BACK TO TP PART ENDS ======-->
    <script>
       function changeId(value) {
-        window.location.href = `/compare/${encodeURIComponent(value)}`;
-        document.getElementById('select1').value = value;
+         if (value === 'Diploma') {
+            value = 4;
+        }else (value === 'Bachelor'){
+            value = 3;
+        }else (value === 'Master'){
+            value = 2;
+        }else (value === 'Doctor'){
+            value = 1;
+        }
+        window.location.href = `/compare/$(value)}`;
       }
    </script>
                                        
