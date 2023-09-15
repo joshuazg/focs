@@ -155,7 +155,7 @@ def coursesSingel(id):
         return render_template('error.html', error_message=str(e))
 
 @app.route('/compare/<int:id>')
-def courses(id):
+def compare(id):
 
     if id == 1: #doc
         doc_statement = "SELECT prog_id, prog_name, prog_duration FROM Programme WHERE lvl_id = 1"
