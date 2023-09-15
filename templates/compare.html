@@ -202,8 +202,8 @@
                                         <tr class="bg-light">
                                             <th>Select Programme Level</th>
                                             <th width="300px">
-                                                <select class="form-control" id="select1" onchange="changeId(this.value, document.getElementById('select2').value)>
-                                                    <option>-- Select level --</option>
+                                                <select class="form-control" id="select1" onchange="changeId(this.value, document.getElementById('select1').value)>
+                                                    <option value1="0">-- Select level --</option>
                                                     <option value1="/compare/4">Diploma</option>
                                                     <option value1="/compare/3">Bachelor</option>
                                                     <option value1="/compare/2">Master</option>
@@ -211,8 +211,8 @@
                                                 </select>
                                             </th>
                                             <th width="300px">
-                                                <select class="form-control" id="select2" onchange="changeId(document.getElementById('select1').value, this.value)">
-                                                    <option>-- Select level --</option>
+                                                <select class="form-control" id="select2" onchange="changeId(document.getElementById('select2').value, this.value)">
+                                                    <option value2="0">-- Select level --</option>
                                                     <option value2="/compare/4">Diploma</option>
                                                     <option value2="/compare/3">Bachelor</option>
                                                     <option value2="/compare/2">Master</option>
@@ -260,7 +260,7 @@
                                     </table>
                                    <script>
                                       function changeId(value1, value2) {
-                                          window.location.href = `/compare/{value1}/{value2}`;
+                                          window.location.href = `/compare/${value1}/${value2}`;
                                       }
                                   </script>
                                 </div>
