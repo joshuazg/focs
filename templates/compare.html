@@ -361,7 +361,7 @@
 
    <script>
       function changeId(value) {
-        window.location.href = `/compare/${value}`;
+        window.location.href = `/compare/${encodeURIComponent(value)}`;
       }
    </script>
     <!--====== jquery js ======-->
