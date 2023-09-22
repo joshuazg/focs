@@ -181,8 +181,8 @@ def compare_prog():
             program_details = cursor.fetchall()
         cursor.close()
         
-        return render_template('compare.html', program_levels=program_levels, programs=programs, program_details=program_details)
-    return render_template('compare.html', program_levels=None, programs=None, program_details=None)
+        return render_template('compare.html', programme_levels=programme_levels, programmes=programmes, programme_details=programme_details)
+    return render_template('compare.html', programme_levels=None, programmes=None, programme_details=None)
 
 
 
