@@ -154,19 +154,21 @@ def coursesSingel(id):
         print("Error:", str(e))
         return render_template('error.html', error_message=str(e))
         
-@app.route('/compare', methods=['GET', 'POST'])
-def compare_prog():
-    if request.method == 'POST' or request.method == 'GET':
-        program_level = request.form.get('program_level') or request.args.get('program_level')
+@app.route('/compare', methods=['POST'])
+def compare_programs():
+    selected_programs = request.form.getlist('program_level')
 
-        cursor = db_conn.cursor()
-        cursor.execute('SELECT * FROM ProgrammeLevel WHERE lvl_name = %s', (program_level,))
-        prog = cursor.fetchall()
-        cursor.close()
+    # Assuming 'selected_programs' is a list of program level values (e.g., ['Diploma', 'Bachelor'])
+    # Modify your database query to retrieve data for the selected program levels
+    cursor = db_conn.cursor()
+    
+    # Use IN clause to select programs for multiple levels
+    cursor.execute('SELECT * FROM ProgrammeLevel WHERE lvl_name IN (%s)' % ','.join(['%s'] * len(selected_programs)), tuple(selected_programs))
+    programs = cursor.fetchall()
+    cursor.close()
 
-        return render_template('compare.html', program=prog)
+    return render_template('compare.html', programs=programs)
 
-    return render_template('compare.html', products=None)
 
 
 if __name__ == '__main__':
