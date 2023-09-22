@@ -208,7 +208,7 @@
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
                                                     <select name="programme_level" id="programme_level" disabled>
-                                                        {% if session['compare_level'] == 4 %}
+                                                        {% if session['compare_level'] == 'Diploma' %}
                                                             <option>-- Diploma --</option>
                                                         {% elif session['compare_level'] == 3 %}
                                                             <option>-- Bachelor --</option>
