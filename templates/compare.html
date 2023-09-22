@@ -210,7 +210,7 @@
                                                     <select name="programme_level" id="programme_level" readonly>
                                                         {% if session['compare_level'] == 4 %}
                                                             <option>-- Diploma --</option>
-							{% if session['compare_level'] == Diploma %}
+							{% if session['compare_level'] == 'Diploma' %}
                                                             <option>-- Diploma --</option>
                                                         {% elif session['compare_level'] == 3 %}
                                                             <option>-- Bachelor --</option>
