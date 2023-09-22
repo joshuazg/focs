@@ -166,10 +166,11 @@ def compare_prog():
     placeholders = ', '.join(['%s'] * len(selected_programs))
     
     # Create the SQL query with placeholders
-    sql_query = f"SELECT * FROM ProgrammeLevel WHERE lvl_name IN ({placeholders})"
+    sql_query = "SELECT * FROM ProgrammeLevel WHERE lvl_name IN (%s)" % placeholders
     
     # Execute the query with the selected_programs as parameters
-    cursor.execute(sql_query, tuple(selected_programs))
+    cursor.execute(sql_query, selected_programs)
+
     programs = cursor.fetchall()
     cursor.close()
 
