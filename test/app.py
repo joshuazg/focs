@@ -157,15 +157,27 @@ def coursesSingel(id):
 @app.route('/compare', methods=['GET', 'POST'])
 def compare_prog():
     if request.method == 'POST' or request.method == 'GET':
-        program_level = request.form.get('program_level') or request.args.get('program_level')
-
         cursor = db_conn.cursor()
-        cursor.execute('SELECT * FROM ProgrammeLevel WHERE lvl_name = %s', (program_level,))
-        prog = cursor.fetchall()
+
+        # Get the list of program levels
+        cursor.execute('SELECT * FROM ProgrammeLevel')
+        program_levels = cursor.fetchall()
+
+        # Get the selected program level from the form
+        selected_program_level = request.form.get('program_level') or request.args.get('program_level')
+
+        # If a program level is selected, fetch the list of programs for that level
+        if selected_program_level:
+            cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_program_level,))
+            programs = cursor.fetchall()
+        else:
+            programs = []
+
         cursor.close()
 
-        return render_template('compare.html', program=prog)
-    return render_template('compare.html', products=None)
+        return render_template('compare.html', program_levels=program_levels, programs=programs)
+    return render_template('compare.html', program_levels=None, programs=None)
+
 
 
 
