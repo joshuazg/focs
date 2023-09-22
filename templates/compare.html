@@ -239,10 +239,8 @@
                                             {% endif %}
 					    <th></th>
 					    </tr>
-						  
-                                            {% if session['compare_level']: %}
-                                            <tr>
-					    {% if session['compare_prog'] and session['compare_prog1']: %}	
+					    {% if session['compare_level'] and session['compare_prog'] and session['compare_prog1'] : %}
+						  <tr>
                                                 <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
@@ -262,8 +260,8 @@
                                                         {% endfor %}
                                                     </select>
                                                 </td>
-					    {% else %}
-						<!--Programme-->
+                                            {% elif session['compare_level']: %}
+                                            	<!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
                                                     <select name="programme" id="programme">
