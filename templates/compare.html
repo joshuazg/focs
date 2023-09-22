@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-   
+
     <!--====== Required meta tags ======-->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!--====== Title ======-->
     <title>Tunku Abdul Rahman University Technology and Management</title>
-    
+
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="https://www.tarc.edu.my/images/tarIco.ico" type="image/png">
 
@@ -20,10 +20,10 @@
 
     <!--====== Animate css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.css') }}">
-    
+
     <!--====== Nice Select css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}">
-    
+
     <!--====== Nice Number css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.nice-number.min.css') }}">
 
@@ -32,19 +32,19 @@
 
     <!--====== Bootstrap css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    
+
     <!--====== Fontawesome css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
 
     <!--====== Default css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/default.css') }}">
-    
+
     <!--====== Style css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
+
     <!--====== Responsive css ======-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
-  
+
 </head>
 
 <body>
@@ -66,7 +66,8 @@
                         <div class="support-button float-right d-none d-md-block">
                             <div class="support float-left">
                                 <div class="focs">
-                                    <img src="{{ url_for('static', filename='images/focs logo.png') }}" alt="icon" style="width:370px;height:100px;">
+                                    <img src="{{ url_for('static', filename='images/focs logo.png') }}" alt="icon"
+                                        style="width:370px;height:100px;">
                                 </div>
                             </div>
                         </div>
@@ -75,12 +76,14 @@
             </div> <!-- container -->
         </div> <!-- header logo support -->
 
-       <div class="navigation">
+        <div class="navigation">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10 col-md-10 col-sm-9 col-8">
                         <nav class="navbar navbar-expand-lg">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
@@ -102,7 +105,7 @@
                                         </ul> -->
                                     </li>
                                     <li class="nav-item">
-                                        <a  class="active">Programme</a>
+                                        <a class="active">Programme</a>
                                         <ul class="sub-menu">
                                             <li><a href="{{ url_for('courses', id=4) }}">Diploma</a></li>
                                             <li><a href="{{ url_for('courses', id=3) }}">Bachelor</a></li>
@@ -188,7 +191,7 @@
     <!--====== PAGE BANNER PART ENDS ======-->
 
     <!--====== EVENTS PART START ======-->
-   <section id="event-singel" class="pt-120 pb-120 gray-bg">
+    <section id="event-singel" class="pt-120 pb-120 gray-bg">
         <div class="container">
             <div class="events-area">
                 <div class="row">
@@ -201,22 +204,59 @@
                                         <table class="table">
                                             <!--Programme Level-->
                                             <tr class="bg-light">
+                                                {% if session['programme_levels']: %}
+                                                {% if session[] == 4: %}
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
-                                                    <select name="programme_level" id="programme_level" onchange="getProgrammeLevel(this)">
+                                                    <select name="programme_level" id="programme_level"
+                                                        onchange="getProgrammeLevel(this)">
+                                                        <option>-- Diploma --</option>
+                                                    </select>
+                                                </th>
+                                                {% if session[] == 3: %}
+                                                <th><label for="programme_level">Select a programme level:</label></th>
+                                                <th width="300px">
+                                                    <select name="programme_level" id="programme_level"
+                                                        onchange="getProgrammeLevel(this)">
+                                                        <option>-- Bachelor --</option>
+                                                    </select>
+                                                </th>
+                                                {% if session[] == 2: %}
+                                                <th><label for="programme_level">Select a programme level:</label></th>
+                                                <th width="300px">
+                                                    <select name="programme_level" id="programme_level"
+                                                        onchange="getProgrammeLevel(this)">
+                                                        <option>-- Master --</option>
+                                                    </select>
+                                                </th>
+                                                {% if session[] == 1: %}
+                                                <th><label for="programme_level">Select a programme level:</label></th>
+                                                <th width="300px">
+                                                    <select name="programme_level" id="programme_level"
+                                                        onchange="getProgrammeLevel(this)">
+                                                        <option>-- Doctor --</option>
+                                                    </select>
+                                                </th>
+                                                {% else: %}
+                                                <th><label for="programme_level">Select a programme level:</label></th>
+                                                <th width="300px">
+                                                    <select name="programme_level" id="programme_level"
+                                                        onchange="getProgrammeLevel(this)">
                                                         <option value="">-- Select Programme Level --</option>
                                                         {% for level in programme_levels %}
                                                         <option value="{{ level[0] }}">{{ level[1] }}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </th>
+                                                {% endif %}
                                             </tr>
-
+                                            {% if session['programme_levels']: %}
                                             <tr>
                                                 <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
-                                                    <select name="programme" id="programme" onchange="getProgramme(this)">
+                                                    <select name="programme" id="programme"
+                                                        onchange="getProgramme(this)">
                                                         <option>-- Select Programme --</option>
                                                         {% for program in programmes %}
                                                         <option value="{{ program[0] }}">{{ program[2] }}</option>
@@ -224,7 +264,8 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select name="programme1" id="programme1" onchange="getProgramme1(this)">
+                                                    <select name="programme1" id="programme1"
+                                                        onchange="getProgramme1(this)">
                                                         <option>-- Select Programme --</option>
                                                         {% for program1 in programmes1 %}
                                                         <option value="{{ program1[0] }}">{{ program1[2] }}</option>
@@ -272,13 +313,14 @@
                                                 <td id="duration1">{{ program_details1[7] }}</td>
                                                 {% endfor %}
                                             </tr>
+                                            {% endif %}
                                         </table>
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <nav class="courses-pagination mt-50">
                                                     <ul class="pagination justify-content-center">
                                                         <ul class="nav" id="myTab" role="tablist">
-                                                             <input type="submit" value="Compare">
+                                                            <input type="submit" value="Compare">
                                                         </ul> <!-- nav -->
                                                     </ul>
                                                 </nav> <!-- courses pagination -->
@@ -293,7 +335,7 @@
             </div> <!-- events-area -->
         </div> <!-- container -->
     </section>
-    
+
 
     <!--====== EVENTS PART ENDS ======-->
 
@@ -378,76 +420,77 @@
 
     </footer>
     <script>
-    function getProgrammeLevel() {
-        var selectedProgrammeLevel = document.getElementById('programme_level').value;
-        localStorage.setItem('selectedProgrammeLevel', selectedProgrammeLevel);
-    }
+        function getProgrammeLevel() {
+            var selectedProgrammeLevel = document.getElementById('programme_level').value;
+            localStorage.setItem('selectedProgrammeLevel', selectedProgrammeLevel);
+        }
 
-    function getProgramme() {
-        var selectedProgramme = document.getElementById('programme').value;
-        localStorage.setItem('selectedProgramme', selectedProgramme);
-    }
+        function getProgramme() {
+            var selectedProgramme = document.getElementById('programme').value;
+            localStorage.setItem('selectedProgramme', selectedProgramme);
+        }
 
-    function getProgramme1() {
-        var selectedProgramme1 = document.getElementById('programme1').value;
-        localStorage.setItem('selectedProgramme1', selectedProgramme1);
-    }
+        function getProgramme1() {
+            var selectedProgramme1 = document.getElementById('programme1').value;
+            localStorage.setItem('selectedProgramme1', selectedProgramme1);
+        }
 
-    // Initialize the dropdowns with stored values
-    window.onload = function () {
-        document.getElementById('programme_level').value = localStorage.getItem('selectedProgrammeLevel');
-        document.getElementById('programme').value = localStorage.getItem('selectedProgramme');
-        document.getElementById('programme1').value = localStorage.getItem('selectedProgramme1');
-    };
-   </script>
+        // Initialize the dropdowns with stored values
+        window.onload = function () {
+            document.getElementById('programme_level').value = localStorage.getItem('selectedProgrammeLevel');
+            document.getElementById('programme').value = localStorage.getItem('selectedProgramme');
+            document.getElementById('programme1').value = localStorage.getItem('selectedProgramme1');
+        };
+    </script>
 
     <!--====== FOOTER PART ENDS ======-->
-     
+
     <!--====== BACK TO TP PART START ======-->
 
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
-    <!--====== BACK TO TP PART ENDS ======-->                                      
-                                       
+    <!--====== BACK TO TP PART ENDS ======-->
+
     <!--====== jquery js ======-->
     <script src="{{url_for('static', filename='js/vendor/modernizr-3.6.0.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
 
-   <!--====== Bootstrap js ======-->
+    <!--====== Bootstrap js ======-->
     <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-    
+
     <!--====== Slick js ======-->
-   <script src="{{url_for('static', filename='js/slick.min.js')}}"></script>
-    
+    <script src="{{url_for('static', filename='js/slick.min.js')}}"></script>
+
     <!--====== Magnific Popup js ======-->
     <script src="{{url_for('static', filename='js/jquery.magnific-popup.min.js')}}"></script>
-    
+
     <!--====== Counter Up js ======-->
     <script src="{{url_for('static', filename='js/waypoints.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/jquery.counterup.min.js')}}"></script>
 
     <!--====== Nice Select js ======-->
-   <script src="{{url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
-    
+    <script src="{{url_for('static', filename='js/jquery.nice-select.min.js')}}"></script>
+
     <!--====== Nice Number js ======-->
-   <script src="{{url_for('static', filename='js/jquery.nice-number.min.js')}}"></script>
-    
+    <script src="{{url_for('static', filename='js/jquery.nice-number.min.js')}}"></script>
+
     <!--====== Count Down js ======-->
-   <script src="{{url_for('static', filename='js/jquery.countdown.min.js')}}"></script>
-    
+    <script src="{{url_for('static', filename='js/jquery.countdown.min.js')}}"></script>
+
     <!--====== Validator js ======-->
-   <script src="{{url_for('static', filename='js/validator.min.js')}}"></script>
-    
+    <script src="{{url_for('static', filename='js/validator.min.js')}}"></script>
+
     <!--====== Ajax Contact js ======-->
     <script src="{{url_for('static', filename='js/ajax-contact.js')}}"></script>
-    
+
     <!--====== Main js ======-->
-   <script src="{{url_for('static', filename='js/main.js')}}"></script>
-    
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+
     <!--====== Map js ======-->
-    <script src="{{url_for('static', filename='https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ')}}"></script>
+    <script
+        src="{{url_for('static', filename='https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ')}}"></script>
     <script src="{{url_for('static', filename='js/map-script.js')}}"></script>
-   
+
 </body>
 
 </html>
