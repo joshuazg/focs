@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, session
 from pymysql import connections
 from flask_session import Session
 import os
@@ -166,7 +166,7 @@ def compare_prog():
         cursor = db_conn.cursor()      
         cursor.execute('SELECT * FROM ProgrammeLevel')
         programme_levels = cursor.fetchall()
-        Session['compare_level'] = programme_levels
+        session['compare_level'] = programme_levels
         
         # Get the selected program level from the form
         selected_programme_level = request.form.get('programme_level') or request.args.get('programme_level')
