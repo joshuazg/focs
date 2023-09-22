@@ -164,6 +164,7 @@ def compare_prog():
 
         # Get the selected program level from the form
         selected_programme_level = request.form.get('programme_level') or request.args.get('programme_level')
+        selected_programme_level1 = request.form.get('programme_level1') or request.args.get('programme_level1')
 
         # If a programme level is selected, fetch the list of programme for that level
         if selected_programme_level:
@@ -171,9 +172,17 @@ def compare_prog():
             programmes = cursor.fetchall()
         else:
             programmes = []
+
+        # If a programme level1 is selected, fetch the list of programme for that level
+        if selected_programme_level1:
+            cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_programme_level1,))
+            programmes1 = cursor.fetchall()
+        else:
+            programmes1 = []
             
         # Get the selected programme from the form
         selected_programme = request.form.get('programme') or request.args.get('programme')
+        selected_programme1 = request.form.get('programme1') or request.args.get('programme1')
         
         #If a programme is selected, fetch the details of programmes out
         if selected_programme:
@@ -181,10 +190,17 @@ def compare_prog():
             programme_details = cursor.fetchall()
         else:
             programme_details = []
+
+        #If a programme1 is selected, fetch the details of programmes out
+        if selected_programme1:
+            cursor.execute('SELECT * FROM Programme WHERE prog_id = %s', (selected_programme1,))
+            programme_details1 = cursor.fetchall()
+        else:
+            programme_details1 = []
         cursor.close()
         
-        return render_template('compare.html', programme_levels=programme_levels, programmes=programmes, programme_details=programme_details)
-    return render_template('compare.html', programme_levels=None, programmes=None, programme_details=None)
+        return render_template('compare.html', programme_levels=programme_levels, programmes=programmes, programmes1=programmes1, programme_details=programme_details, programme_details1=programme_details1)
+    return render_template('compare.html', programme_levels=None, programmes=None, programmes1=None, programme_details=None, programme_details1=None)
 
 
 
