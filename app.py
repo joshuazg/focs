@@ -190,7 +190,7 @@ def compare_prog():
         # Get the selected programme from the form
         selected_programme = request.form.get('programme') or request.args.get('programme')
         selected_programme1 = request.form.get('programme1') or request.args.get('programme1')
-        
+        session['compare_prog, compare_prog1'] = selected_programme, selected_programme1
         #If a programme is selected, fetch the details of programmes out
         if selected_programme:
             cursor.execute('SELECT * FROM Programme WHERE prog_id = %s', (selected_programme,))
