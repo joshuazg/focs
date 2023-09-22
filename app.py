@@ -220,6 +220,18 @@ def compare(id1):
     else:
         return render_template('compare.html')
 
+@app.route('/search', methods=['GET'])
+def search():
+    query = request.args.get('query')
+
+    # Execute a SQL query to search for the data
+    cursor = db_conn.cursor()
+    cursor.execute("SELECT * FROM Internship, Company WHERE job_title LIKE %s", ('%' + query + '%',) )
+    results = cursor.fetchall()
+    cursor.close()
+
+    return render_template('search_result.html', results=results)
+
         
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
