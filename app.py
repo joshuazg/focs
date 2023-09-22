@@ -161,11 +161,13 @@ def compare_prog():
         cursor = db_conn.cursor()      
         cursor.execute('SELECT * FROM ProgrammeLevel')
         programme_levels = cursor.fetchall()
-
+        session['compare_level'] = programme_levels
+        
         # Get the selected program level from the form
         selected_programme_level = request.form.get('programme_level') or request.args.get('programme_level')
         selected_programme_level1 = request.form.get('programme_level') or request.args.get('programme_level')
-
+        
+        
         # If a programme level is selected, fetch the list of programme for that level
         if selected_programme_level:
             cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_programme_level,))
