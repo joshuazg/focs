@@ -242,11 +242,12 @@
 						  
                                             {% if session['compare_level']: %}
                                             <tr>
+					    {% if session['compare_prog'] and session['compare_prog1'] %}	
                                                 <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
-                                                    <select name="programme" id="programme"
-                                                        onchange="getProgramme(this)">
+                                                    <select name="programme" id="programme">
+							{% if session['compare_prog'] == '1': %}
                                                         <option>-- Select Programme --</option>
                                                         {% for program in programmes %}
                                                         <option value="{{ program[0] }}">{{ program[2] }}</option>
@@ -254,15 +255,34 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select name="programme1" id="programme1"
-                                                        onchange="getProgramme1(this)">
+                                                    <select name="programme1" id="programme1">
                                                         <option>-- Select Programme --</option>
                                                         {% for program1 in programmes1 %}
                                                         <option value="{{ program1[0] }}">{{ program1[2] }}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </td>
+					    {% else %}
+						<!--Programme-->
+                                                <th><label for="programme,programme1">Select a programme:</label></th>
+                                                <td>
+                                                    <select name="programme" id="programme">
+							{% for program_details in programme_details %}
+                                                        <option>-- {{ program_details[2] }} --</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select name="programme1" id="programme1">
+							{% for program_details1 in programme_details1 %}
+                                                        <option>-- {{ program_details1[2] }} --</option>
+                                                        {% endfor%}
+                                                        
+                                                    </select>
+                                                </td>    
+					    {% endif %}
                                             </tr>
+					    {% if session['compare_prog'] and session['compare_prog1'] %}
                                             <!--Programme Fees (Local)-->
                                             <tr>
                                                 <th>Programme Fees (Local)</th>
@@ -303,6 +323,7 @@
                                                 <td id="duration1">{{ program_details1[7] }}</td>
                                                 {% endfor %}
                                             </tr>
+					    {% endif %}
                                             {% endif %}
                                         </table>
                                         <div class="row">
