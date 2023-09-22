@@ -162,8 +162,14 @@ def compare_prog():
     # Modify your database query to retrieve data for the selected program levels
     cursor = db_conn.cursor()
     
-    # Use IN clause to select programs for multiple levels
-    cursor.execute('SELECT * FROM ProgrammeLevel WHERE lvl_name IN (%s)' % ','.join(['%s'] * len(selected_programs)), tuple(selected_programs))
+    # Construct a placeholder string for the IN clause
+    placeholders = ', '.join(['%s'] * len(selected_programs))
+    
+    # Create the SQL query with placeholders
+    sql_query = f"SELECT * FROM ProgrammeLevel WHERE lvl_name IN ({placeholders})"
+    
+    # Execute the query with the selected_programs as parameters
+    cursor.execute(sql_query, tuple(selected_programs))
     programs = cursor.fetchall()
     cursor.close()
 
