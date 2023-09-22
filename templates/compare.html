@@ -203,8 +203,9 @@
                                     <form>
                                           <table class="table">
                                             <!--Programme Level-->
+					    <tr class="bg-light">
 					    {% if session['compare_level']: %}
-                                            <tr class="bg-light">
+                                            
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
                                                     <select name="programme_level" id="programme_level" disabled>
@@ -234,8 +235,10 @@
                                                             {% endfor %}
                                                     </select>
                                                 </th>		
-                                            </tr>
+                                            
                                             {% endif %}
+					    <th></th>
+					    </tr>
 						  
                                             {% if session['compare_level']: %}
                                             <tr>
