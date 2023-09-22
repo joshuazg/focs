@@ -204,7 +204,7 @@
                                         <table class="table">
                                             <!--Programme Level-->
                                             <tr class="bg-light">
-                                                {% if session['programme_levels']: %}
+                                            {% if session['programme_levels']: %}
                                                 {% if session[] == 4: %}
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
@@ -248,7 +248,7 @@
                                                         {% endfor %}
                                                     </select>
                                                 </th>
-                                                {% endif %}
+                                            {% endif %}
                                             </tr>
                                             {% if session['programme_levels']: %}
                                             <tr>
