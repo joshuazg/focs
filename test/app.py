@@ -156,25 +156,16 @@ def coursesSingel(id):
         
 @app.route('/compare', methods=['GET', 'POST'])
 def compare_prog():
-    selected_programs = request.form.getlist('program_level')
+    if request.method == 'POST' or request.method == 'GET':
+        program_level = request.form.get('program_level') or request.args.get('program_level')
 
-    # Assuming 'selected_programs' is a list of program level values (e.g., ['Diploma', 'Bachelor'])
-    # Modify your database query to retrieve data for the selected program levels
-    cursor = db_conn.cursor()
-    
-    # Construct a placeholder string for the IN clause
-    placeholders = ', '.join(['%s'] * len(selected_programs))
-    
-    # Create the SQL query with placeholders
-    sql_query = "SELECT * FROM ProgrammeLevel WHERE lvl_name IN (%s)" % placeholders
-    
-    # Execute the query with the selected_programs as parameters
-    cursor.execute(sql_query, selected_programs)
+        cursor = db_conn.cursor()
+        cursor.execute('SELECT * FROM ProgrammeLevel WHERE lvl_name = %s', (program_level,))
+        prog = cursor.fetchall()
+        cursor.close()
 
-    programs = cursor.fetchall()
-    cursor.close()
-
-    return render_template('compare.html', programs=programs)
+        return render_template('compare.html', program=prog)
+    return render_template('compare.html', products=None)
 
 
 
