@@ -12,14 +12,13 @@ customregion = "us-east-1"
 
 
 app = Flask(__name__, static_folder='assets')
-
-bucket = custombucket
-region = customregion
-
 #Session
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+bucket = custombucket
+region = customregion
 
 db_conn = connections.Connection(
     host=customhost,
