@@ -160,7 +160,7 @@ def compare_prog():
         program_level = request.form.get('program_level') or request.args.get('program_level')
 
         cursor = db_conn.cursor()
-        cursor.execute('SELECT * FROM Programme WHERE lvl_name = ?', (program_level,))
+        cursor.execute('SELECT * FROM Programme WHERE lvl_name = %s', (program_level,))
         prog = cursor.fetchall()
         cursor.close()
 
