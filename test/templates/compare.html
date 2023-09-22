@@ -26,7 +26,7 @@
         <input type="submit" value="Show Details (GET)">
     </form>
 
-    {% if products %}
+    {% if program %}
     <h2>Program Details</h2>
     <table>
         <tr>
@@ -34,7 +34,7 @@
             <th>Name</th>
             <th>Price</th>
         </tr>
-        {% for product in products %}
+        {% for product in program %}
             <tr>
                 <td>{{ product[0] }}</td>
                 <td>{{ product[1] }}</td>
