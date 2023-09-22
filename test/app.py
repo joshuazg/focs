@@ -157,26 +157,32 @@ def coursesSingel(id):
 @app.route('/compare', methods=['GET', 'POST'])
 def compare_prog():
     if request.method == 'POST' or request.method == 'GET':
-        cursor = db_conn.cursor()
-
-        # Get the list of program levels
+        #Get the Programme Level
+        cursor = db_conn.cursor()      
         cursor.execute('SELECT * FROM ProgrammeLevel')
-        program_levels = cursor.fetchall()
+        programme_levels = cursor.fetchall()
 
         # Get the selected program level from the form
-        selected_program_level = request.form.get('program_level') or request.args.get('program_level')
+        selected_programme_level = request.form.get('programme_level') or request.args.get('programme_level')
 
-        # If a program level is selected, fetch the list of programs for that level
+        # If a programme level is selected, fetch the list of programme for that level
         if selected_program_level:
-            cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_program_level,))
+            cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_programme_level,))
             programs = cursor.fetchall()
         else:
             programs = []
-
+            
+        # Get the selected programme from the form
+        selected_programme = request.form.get('programme') or request.args.get('programme')
+        
+        #If a programme is selected, fetch the details of programmes out
+        if selected_programme:
+            cursor.excute('SELECT * FROM Programme WHERE prog_id = %s', (selected_programme,))
+            program_details = cursor.fetchall()
         cursor.close()
-
-        return render_template('compare.html', program_levels=program_levels, programs=programs)
-    return render_template('compare.html', program_levels=None, programs=None)
+        
+        return render_template('compare.html', program_levels=program_levels, programs=programs, program_details=program_details)
+    return render_template('compare.html', program_levels=None, programs=None, program_details=None)
 
 
 
