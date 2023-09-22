@@ -203,7 +203,7 @@
                                             <tr class="bg-light">
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
-                                                    <select name="programme_level" id="programme_level">
+                                                    <select name="programme_level" id="programme_level" onchange="getProgrammeLevel(this)">
                                                         <option value="">-- Select Programme Level --</option>
                                                         {% for level in programme_levels %}
                                                         <option value="{{ level[0] }}">{{ level[1] }}</option>
@@ -216,16 +216,16 @@
                                                 <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
-                                                    <select name="programme" id="programme">
-                                                        <option value="">-- Select Programme --</option>
+                                                    <select name="programme" id="programme" onchange="getProgramme(this)">
+                                                        <option>-- Select Programme --</option>
                                                         {% for program in programmes %}
                                                         <option value="{{ program[0] }}">{{ program[2] }}</option>
                                                         {% endfor %}
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select name="programme1" id="programme1">
-                                                        <option value="">-- Select Programme --</option>
+                                                    <select name="programme1" id="programme1" onchange="getProgramme1(this)">
+                                                        <option>-- Select Programme --</option>
                                                         {% for program1 in programmes1 %}
                                                         <option value="{{ program1[0] }}">{{ program1[2] }}</option>
                                                         {% endfor %}
@@ -278,7 +278,7 @@
                                                 <nav class="courses-pagination mt-50">
                                                     <ul class="pagination justify-content-center">
                                                         <ul class="nav" id="myTab" role="tablist">
-                                                            <input type="submit" value="Compare">
+                                                            <input onclick="submitForm(event)" type="submit" value="Compare">
                                                         </ul> <!-- nav -->
                                                     </ul>
                                                 </nav> <!-- courses pagination -->
@@ -377,9 +377,22 @@
         </div> <!-- footer top -->
 
     </footer>
-
+    <script>
+       
+    </script>
     <!--====== FOOTER PART ENDS ======-->
+      function getProgrammeLevel(){
+         console.log(document.getElementById('programme_level').value);
+      }
 
+      function getProgramme()}
+         console.log(document.getElementById('programme').value);
+      
+      }
+      function getProgramme1()}
+         console.log(document.getElementById('programme1').value);
+      
+      }
     <!--====== BACK TO TP PART START ======-->
 
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
