@@ -242,7 +242,7 @@
 						  
                                             {% if session['compare_level']: %}
                                             <tr>
-					    {% if session['compare_prog'] and session['compare_prog1'] %}	
+					    {% if session['compare_prog'] and session['compare_prog1']: %}	
                                                 <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
@@ -282,7 +282,7 @@
                                                 </td>    
 					    {% endif %}
                                             </tr>
-					    {% if session['compare_prog'] and session['compare_prog1'] %}
+					    {% if session['compare_prog'] and session['compare_prog1']: %}
                                             <!--Programme Fees (Local)-->
                                             <tr>
                                                 <th>Programme Fees (Local)</th>
@@ -323,6 +323,7 @@
                                                 <td id="duration1">{{ program_details1[7] }}</td>
                                                 {% endfor %}
                                             </tr>
+					    {% endif %}
 					    {% endif %}
                                             {% endif %}
                                         </table>
