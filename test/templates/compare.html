@@ -7,21 +7,33 @@
     <h1>Program Comparison</h1>
 
     <form action="/compare" method="post">
-    <label for="program_level">Select a program level:</label>
-    <select name="program_level" id="program_level">
-        <option value="">-- Select Program Level --</option>
-        {% for level in program_levels %}
+    <label for="programme_level">Select a programme level:</label>
+    <select name="programme_level" id="programme_level">
+        <option value="">-- Select Programme Level --</option>
+        {% for level in programme_levels %}
             <option value="{{ level[0] }}">{{ level[1] }}</option>
         {% endfor %}
     </select>
 
-    <label for="program">Select a program:</label>
-    <select name="program" id="program">
-        <option value="">-- Select Program --</option>
+    <label for="programme">Select a program:</label>
+    <select name="programme" id="programme">
+        <option value="">-- Select Programme --</option>
         {% for program in programs %}
             <option value="{{ program[0] }}">{{ program[2] }}</option>
         {% endfor %}
     </select>
+
+    <div>
+        {% for program_details in program_details %}
+        <tr>
+            <th>Programme Name: {{ program_details[2] }}</th>
+            <th>Programme Fees(Local):{{ program_details[3] }}</th>
+            <th>Programme Fees(International):{{ program_details[4] }}</th>
+            <th>Programme Intake: {{ program_details[5] }}</th>
+            <th>Programme Duration: {{ program_details[7] }}</th>
+        </tr>
+        {% endfor %}
+    </div>
 
     <input type="submit" value="Compare">
 </form>
