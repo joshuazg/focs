@@ -166,7 +166,7 @@ def compare_prog():
         selected_programme_level = request.form.get('programme_level') or request.args.get('programme_level')
 
         # If a programme level is selected, fetch the list of programme for that level
-        if selected_program_level:
+        if selected_programme_level:
             cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_programme_level,))
             programs = cursor.fetchall()
         else:
