@@ -189,7 +189,7 @@
     </section>
 
     <!--====== PAGE BANNER PART ENDS ======-->
-	{{ session['compare_level']}}
+    {{ session['compare_level']}}
     <!--====== EVENTS PART START ======-->
     <section id="event-singel" class="pt-120 pb-120 gray-bg">
         <div class="container">
@@ -201,51 +201,51 @@
                             <div class="container">
                                 <div class="col-md-9 mx-auto">
                                     <form>
-                                          <table class="table">
+                                        <table class="table">
                                             <!--Programme Level-->
-					    <tr class="bg-light">
-					    {% if session['compare_level']: %}
-                                            
+                                            <tr class="bg-light">
+                                                {% if session['compare_level']: %}
+
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
                                                     <select name="programme_level" id="programme_level" disabled>
                                                         {% if session['compare_level'] == '4': %}
-                                                            <option>-- Diploma --</option>
+                                                        <option>-- Diploma --</option>
                                                         {% elif session['compare_level'] == '3': %}
-                                                            <option>-- Bachelor --</option>
+                                                        <option>-- Bachelor --</option>
                                                         {% elif session['compare_level'] == '2': %}
-                                                            <option>-- Master --</option>
+                                                        <option>-- Master --</option>
                                                         {% elif session['compare_level'] == '1': %}
-                                                            <option>-- Doctor --</option>
+                                                        <option>-- Doctor --</option>
                                                         {% else %}
                                                         <option value="">-- Select Programme Level --</option>
-                                                            {% for level in programme_levels %}
-                                                            <option value="{{ level[0] }}">{{ level[1] }}</option>
-                                                            {% endfor %}
+                                                        {% for level in programme_levels %}
+                                                        <option value="{{ level[0] }}">{{ level[1] }}</option>
+                                                        {% endfor %}
                                                         {% endif %}
                                                     </select>
                                                 </th>
-					     {% else %}
-						<th><label for="programme_level">Select a programme level:</label></th>
+                                                {% else %}
+                                                <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
                                                     <select name="programme_level" id="programme_level">
                                                         <option value="">-- Select Programme Level --</option>
-                                                            {% for level in programme_levels %}
-                                                            <option value="{{ level[0] }}">{{ level[1] }}</option>
-                                                            {% endfor %}
+                                                        {% for level in programme_levels %}
+                                                        <option value="{{ level[0] }}">{{ level[1] }}</option>
+                                                        {% endfor %}
                                                     </select>
-                                                </th>		
-                                            
-                                            {% endif %}
-					    <th></th>
-					    </tr>
-					    {% if session['compare_level'] and session['compare_prog'] and session['compare_prog1'] : %}
-						  <tr>
+                                                </th>
+
+                                                {% endif %}
+                                                <th></th>
+                                            </tr>
+                                            {% if session['compare_level'] and session['compare_prog'] and session['compare_prog1'] : %}
+                                            <tr>
                                                 <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
                                                     <select name="programme" id="programme">
-							{% if session['compare_prog'] == '1': %}
+                                                        {% if session['compare_prog'] == '1': %}
                                                         <option>-- Select Programme --</option>
                                                         {% for program in programmes %}
                                                         <option value="{{ program[0] }}">{{ program[2] }}</option>
@@ -261,26 +261,26 @@
                                                     </select>
                                                 </td>
                                             {% elif session['compare_level']: %}
-                                            	<!--Programme-->
+                                                <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
                                                 <td>
                                                     <select name="programme" id="programme">
-							{% for program_details in programme_details %}
+                                                        {% for program_details in programme_details %}
                                                         <option>-- {{ program_details[2] }} --</option>
                                                         {% endfor %}
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select name="programme1" id="programme1">
-							{% for program_details1 in programme_details1 %}
+                                                        {% for program_details1 in programme_details1 %}
                                                         <option>-- {{ program_details1[2] }} --</option>
                                                         {% endfor%}
-                                                        
+
                                                     </select>
-                                                </td>    
-					    {% endif %}
+                                                </td>
+                                            {% endif %}
                                             </tr>
-					    {% if session['compare_prog'] and session['compare_prog1']: %}
+                                            {% if session['compare_prog'] and session['compare_prog1']: %}
                                             <!--Programme Fees (Local)-->
                                             <tr>
                                                 <th>Programme Fees (Local)</th>
@@ -321,8 +321,6 @@
                                                 <td id="duration1">{{ program_details1[7] }}</td>
                                                 {% endfor %}
                                             </tr>
-					    {% endif %}
-					    {% endif %}
                                             {% endif %}
                                         </table>
                                         <div class="row">
