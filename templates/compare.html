@@ -201,22 +201,20 @@
                             <div class="container">
                                 <div class="col-md-9 mx-auto">
                                     <form>
-                                        <table class="table">
+                                         <table class="table">
                                             <!--Programme Level-->
                                             <tr class="bg-light">
-                                            {% if session['programme_levels']: %}
+                                            {% if session['compare_level']: %}
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
-                                                    <select name="programme_level" id="programme_level" readonly>
-                                                        {% if session['programme_levels'] == 4 %}
+                                                    <select name="programme_level" id="programme_level" disabled>
+                                                        {% if session['compare_level'] == 4 %}
                                                             <option>-- Diploma --</option>
-							{% if session['programme_levels'] == 'Diploma' %}
-                                                            <option>-- Diploma --</option>
-                                                        {% elif session['programme_levels'] == 3 %}
+                                                        {% elif session['compare_level'] == 3 %}
                                                             <option>-- Bachelor --</option>
-                                                        {% elif session['programme_levels'] == 2 %}
+                                                        {% elif session['compare_level'] == 2 %}
                                                             <option>-- Master --</option>
-                                                        {% elif session['programme_levels'] == 1 %}
+                                                        {% elif session['compare_level'] == 1 %}
                                                             <option>-- Doctor --</option>
                                                         {% else %}
                                                         <option value="">-- Select Programme Level --</option>
@@ -226,7 +224,7 @@
                                                         {% endif %}
                                                     </select>
                                                 </th>
-					   	{% else %}
+					   	{% else: %}
 						<th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
                                                     <select name="programme_level" id="programme_level">
