@@ -155,70 +155,52 @@ def coursesSingel(id):
         return render_template('error.html', error_message=str(e))
 
 @app.route('/compare', methods=['GET', 'POST'])
-def compare():
-try:
-   
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 1"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchone()
-        doc_cursor.close()
+def compare_prog():
+    if request.method == 'POST' or request.method == 'GET':
+        #Get the Programme Level
+        cursor = db_conn.cursor()      
+        cursor.execute('SELECT * FROM ProgrammeLevel')
+        programme_levels = cursor.fetchall()
 
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 1"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchall()
-        doc_cursor1.close()
+        # Get the selected program level from the form
+        selected_programme_level = request.form.get('programme_level') or request.args.get('programme_level')
+        selected_programme_level1 = request.form.get('programme_level') or request.args.get('programme_level')
+
+        # If a programme level is selected, fetch the list of programme for that level
+        if selected_programme_level:
+            cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_programme_level,))
+            programmes = cursor.fetchall()
+        else:
+            programmes = []
+
+        # If a programme level1 is selected, fetch the list of programme for that level
+        if selected_programme_level1:
+            cursor.execute('SELECT * FROM Programme WHERE lvl_id = %s', (selected_programme_level1,))
+            programmes1 = cursor.fetchall()
+        else:
+            programmes1 = []
+            
+        # Get the selected programme from the form
+        selected_programme = request.form.get('programme') or request.args.get('programme')
+        selected_programme1 = request.form.get('programme1') or request.args.get('programme1')
         
-        return render_template('compare.html', prog=result, name=lvl)
+        #If a programme is selected, fetch the details of programmes out
+        if selected_programme:
+            cursor.execute('SELECT * FROM Programme WHERE prog_id = %s', (selected_programme,))
+            programme_details = cursor.fetchall()
+        else:
+            programme_details = []
 
-    elif id1 == 2:#master
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 2"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchall()
-        doc_cursor.close()
-
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 2"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchone()
-        doc_cursor1.close()
+        #If a programme1 is selected, fetch the details of programmes out
+        if selected_programme1:
+            cursor.execute('SELECT * FROM Programme WHERE prog_id = %s', (selected_programme1,))
+            programme_details1 = cursor.fetchall()
+        else:
+            programme_details1 = []
+        cursor.close()
         
-        return render_template('compare.html', prog=result, name=lvl)
-
-    elif id1 == 3: #bachelor
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 3"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchall()
-        doc_cursor.close()
-
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 3"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchone()
-        doc_cursor1.close()
-        
-        return render_template('compare.html', prog=result, name=lvl)
-        
-    elif id1 == 4: #diploma
-        doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 4"
-        doc_cursor = db_conn.cursor()
-        doc_cursor.execute(doc_statement)
-        result = doc_cursor.fetchall()
-        doc_cursor.close()
-
-        doc_statement1 = "SELECT prog_id, prog_name, my_fees, fg_fees, intake, prog_duration FROM Programme WHERE lvl_id = 4"
-        doc_cursor1 = db_conn.cursor()
-        doc_cursor1.execute(doc_statement1)
-        lvl = doc_cursor1.fetchone()
-        doc_cursor1.close()
-        
-        return render_template('compare.html', prog=result, name=lvl)
-    
-    else:
-        return render_template('compare.html')
+        return render_template('compare.html', programme_levels=programme_levels, programmes=programmes, programmes1=programmes1, programme_details=programme_details, programme_details1=programme_details1)
+    return render_template('compare.html', programme_levels=None, programmes=None, programmes1=None, programme_details=None, programme_details1=None)
 
 @app.route('/search', methods=['GET'])
 def search():
