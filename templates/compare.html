@@ -201,7 +201,7 @@
                                     <table class="table">
                                         <tr class="bg-light">
                                             <th>Select Programme Level</th>
-                                            <th width="600px">
+                                            <th width="300px">
                                                  <select name="programme_level" id="programme_level">
                                                      <option value="">-- Select Programme Level --</option>
                                                      {% for level in programme_levels %}
@@ -369,11 +369,62 @@
     <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
     <!--====== BACK TO TP PART ENDS ======-->                                      
+      <script>
+          $(document).ready(function() {
+              // Function to update program details based on the selected program level
+              function updateProgramDetails() {
+                  const selectedProgrammeLevel = $("#programme_level").val();
+                  const selectedProgramme = $("#programme").val();
+                  const selectedProgramme1 = $("#programme1").val();
+      
+                  // You should make an AJAX request here to fetch program details based on the selected values
+                  // Update the content of the <td> elements with the received data
+                  // For simplicity, let's assume you have a JavaScript object with program details
+      
+                  // Sample program details (replace this with your actual data)
+                  const programDetails = {
+                      "program1": {
+                          "feesLocal": "Program 1 Local Fees",
+                          "feesInt": "Program 1 International Fees",
+                          "intake": "Program 1 Intake",
+                          "duration": "Program 1 Duration"
+                      },
+                      "program2": {
+                          "feesLocal": "Program 2 Local Fees",
+                          "feesInt": "Program 2 International Fees",
+                          "intake": "Program 2 Intake",
+                          "duration": "Program 2 Duration"
+                      }
+                  };
+      
+                  // Update the content of the <td> elements based on the selected programs
+                  if (selectedProgramme in programDetails) {
+                      $("#feesLocal").text(programDetails[selectedProgramme]["feesLocal"]);
+                      $("#feesInt").text(programDetails[selectedProgramme]["feesInt"]);
+                      $("#intake").text(programDetails[selectedProgramme]["intake"]);
+                      $("#duration").text(programDetails[selectedProgramme]["duration"]);
+                  }
+      
+                  if (selectedProgramme1 in programDetails) {
+                      $("#feesLocal1").text(programDetails[selectedProgramme1]["feesLocal"]);
+                      $("#feesInt1").text(programDetails[selectedProgramme1]["feesInt"]);
+                      $("#intake1").text(programDetails[selectedProgramme1]["intake"]);
+                      $("#duration1").text(programDetails[selectedProgramme1]["duration"]);
+                  }
+              }
+      
+              // Call the function initially to set the default values
+              updateProgramDetails();
+      
+              // Add event listeners to update program details when the dropdown values change
+              $("#programme_level, #programme, #programme1").change(updateProgramDetails);
+          });
+      </script>
                                        
     <!--====== jquery js ======-->
     <script src="{{url_for('static', filename='js/vendor/modernizr-3.6.0.min.js')}}"></script>
     <script src="{{url_for('static', filename='js/vendor/jquery-1.12.4.min.js')}}"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!--====== Bootstrap js ======-->
     <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
     
