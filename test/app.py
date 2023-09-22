@@ -155,7 +155,7 @@ def coursesSingel(id):
         return render_template('error.html', error_message=str(e))
         
 @app.route('/compare', methods=['GET', 'POST'])
-def compare_products():
+def compare_prog():
     if request.method == 'POST' or request.method == 'GET':
         program_level = request.form.get('program_level') or request.args.get('program_level')
 
