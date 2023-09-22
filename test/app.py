@@ -164,7 +164,7 @@ def compare_prog():
 
         # Get the selected program level from the form
         selected_programme_level = request.form.get('programme_level') or request.args.get('programme_level')
-        selected_programme_level1 = request.form.get('programme_level1') or request.args.get('programme_level1')
+        selected_programme_level1 = request.form.get('programme_level') or request.args.get('programme_level')
 
         # If a programme level is selected, fetch the list of programme for that level
         if selected_programme_level:
