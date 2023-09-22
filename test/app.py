@@ -177,7 +177,7 @@ def compare_prog():
         
         #If a programme is selected, fetch the details of programmes out
         if selected_programme:
-            cursor.excute('SELECT * FROM Programme WHERE prog_id = %s', (selected_programme,))
+            cursor.execute('SELECT * FROM Programme WHERE prog_id = %s', (selected_programme,))
             programme_details = cursor.fetchall()
         else:
             programme_details = []
