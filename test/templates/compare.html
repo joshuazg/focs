@@ -18,13 +18,13 @@
     <label for="programme">Select a program:</label>
     <select name="programme" id="programme">
         <option value="">-- Select Programme --</option>
-        {% for program in programs %}
+        {% for program in programmes %}
             <option value="{{ program[0] }}">{{ program[2] }}</option>
         {% endfor %}
     </select>
 
     <div>
-        {% for program_details in program_details %}
+        {% for program_details in programme_details %}
         <tr>
             <th>Programme Name: {{ program_details[2] }}</th>
             <th>Programme Fees(Local):{{ program_details[3] }}</th>
