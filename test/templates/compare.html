@@ -6,6 +6,44 @@
 <body>
     <h1>Program Comparison</h1>
 
+    <form action="/compare" method="post">
+        <label for="program-level">Select Program Levels:</label>
+        <select id="program-level" name="program_level" multiple>
+            <option value="Diploma">Diploma</option>
+            <option value="Bachelor">Bachelor</option>
+            <option value="Master">Master</option>
+            <!-- Add more program levels as needed -->
+        </select>
+        <input type="submit" value="Compare">
+    </form>
+
+    {% if programs %}
+    <h2>Program Details</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Duration</th>
+        </tr>
+        {% for program in programs %}
+            <tr>
+                <td>{{ program[0] }}</td>
+                <td>{{ program[1] }}</td>
+                <td>{{ program[2] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Program Comparison</title>
+</head>
+<body>
+    <h1>Program Comparison</h1>
+
     <form action="/compare" method="get">
         <label for="program-level">Select Program Level:</label>
         <select id="program-level" name="program_level">
