@@ -207,7 +207,7 @@
                                             {% if session['programme_levels']: %}
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
-                                                    <select name="programme_level" id="programme_level" onchange="getProgrammeLevel(this)">
+                                                    <select name="programme_level" id="programme_level" disabled>
                                                         {% if session['programme_levels'] == 4 %}
                                                             <option>-- Diploma --</option>
                                                         {% elif session['programme_levels'] == 3 %}
@@ -224,6 +224,16 @@
                                                         {% endif %}
                                                     </select>
                                                 </th>
+					                           {% else: %}
+						                        <th><label for="programme_level">Select a programme level:</label></th>
+                                                <th width="300px">
+                                                    <select name="programme_level" id="programme_level" onchange="getProgrammeLevel(this)">
+                                                        <option value="">-- Select Programme Level --</option>
+                                                            {% for level in programme_levels %}
+                                                            <option value="{{ level[0] }}">{{ level[1] }}</option>
+                                                            {% endfor %}
+                                                    </select>
+                                                </th>		
                                             {% endif %}
                                             </tr>
                                             {% if session['programme_levels']: %}
