@@ -378,19 +378,29 @@
 
     </footer>
     <script>
-        function getProgrammeLevel(){
-         console.log(document.getElementById('programme_level').value);
-      }
+    function getProgrammeLevel() {
+        var selectedProgrammeLevel = document.getElementById('programme_level').value;
+        localStorage.setItem('selectedProgrammeLevel', selectedProgrammeLevel);
+    }
 
-      function getProgramme()}
-         console.log(document.getElementById('programme').value);
-      
-      }
-      function getProgramme1()}
-         console.log(document.getElementById('programme1').value);
-      
-      }
-    </script>
+    function getProgramme() {
+        var selectedProgramme = document.getElementById('programme').value;
+        localStorage.setItem('selectedProgramme', selectedProgramme);
+    }
+
+    function getProgramme1() {
+        var selectedProgramme1 = document.getElementById('programme1').value;
+        localStorage.setItem('selectedProgramme1', selectedProgramme1);
+    }
+
+    // Initialize the dropdowns with stored values
+    window.onload = function () {
+        document.getElementById('programme_level').value = localStorage.getItem('selectedProgrammeLevel');
+        document.getElementById('programme').value = localStorage.getItem('selectedProgramme');
+        document.getElementById('programme1').value = localStorage.getItem('selectedProgramme1');
+    };
+   </script>
+
     <!--====== FOOTER PART ENDS ======-->
      
     <!--====== BACK TO TP PART START ======-->
