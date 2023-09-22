@@ -216,12 +216,6 @@
                                                             <option>-- Master --</option>
                                                         {% elif session['compare_level'] == 1 %}
                                                             <option>-- Doctor --</option>
-                                                        {% else %}
-                                                        <option value="">-- Select Programme Level --</option>
-                                                            {% for level in programme_levels %}
-                                                            <option value="{{ level[0] }}">{{ level[1] }}</option>
-                                                            {% endfor %}
-                                                        {% endif %}
                                                     </select>
                                                 </th>
 					   	{% else: %}
