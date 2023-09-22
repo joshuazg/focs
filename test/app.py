@@ -154,7 +154,7 @@ def coursesSingel(id):
         print("Error:", str(e))
         return render_template('error.html', error_message=str(e))
         
-@app.route('/compare', methods=['POST'])
+@app.route('/compare', methods=['GET', 'POST'])
 def compare_prog():
     selected_programs = request.form.getlist('program_level')
 
