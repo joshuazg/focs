@@ -154,10 +154,10 @@ def coursesSingel(id):
         print("Error:", str(e))
         return render_template('error.html', error_message=str(e))
 
-@app.route('/compare/<int:id1>')
-def compare(id1):
-
-    if id1 == 1: #doc
+@app.route('/compare', methods=['GET', 'POST'])
+def compare():
+try:
+   
         doc_statement = "SELECT * FROM ProgrammeLevel WHERE lvl_id = 1"
         doc_cursor = db_conn.cursor()
         doc_cursor.execute(doc_statement)
