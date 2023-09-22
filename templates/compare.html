@@ -205,50 +205,25 @@
                                             <!--Programme Level-->
                                             <tr class="bg-light">
                                             {% if session['programme_levels']: %}
-                                                {% if session[] == 4: %}
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
-                                                    <select name="programme_level" id="programme_level"
-                                                        onchange="getProgrammeLevel(this)">
-                                                        <option>-- Diploma --</option>
-                                                    </select>
-                                                </th>
-                                                {% if session[] == 3: %}
-                                                <th><label for="programme_level">Select a programme level:</label></th>
-                                                <th width="300px">
-                                                    <select name="programme_level" id="programme_level"
-                                                        onchange="getProgrammeLevel(this)">
-                                                        <option>-- Bachelor --</option>
-                                                    </select>
-                                                </th>
-                                                {% if session[] == 2: %}
-                                                <th><label for="programme_level">Select a programme level:</label></th>
-                                                <th width="300px">
-                                                    <select name="programme_level" id="programme_level"
-                                                        onchange="getProgrammeLevel(this)">
-                                                        <option>-- Master --</option>
-                                                    </select>
-                                                </th>
-                                                {% if session[] == 1: %}
-                                                <th><label for="programme_level">Select a programme level:</label></th>
-                                                <th width="300px">
-                                                    <select name="programme_level" id="programme_level"
-                                                        onchange="getProgrammeLevel(this)">
-                                                        <option>-- Doctor --</option>
-                                                    </select>
-                                                </th>
-                                                {% else: %}
-                                                <th><label for="programme_level">Select a programme level:</label></th>
-                                                <th width="300px">
-                                                    <select name="programme_level" id="programme_level"
-                                                        onchange="getProgrammeLevel(this)">
+                                                    <select name="programme_level" id="programme_level" onchange="getProgrammeLevel(this)">
+                                                        {% if session['programme_levels'] == 4 %}
+                                                            <option>-- Diploma --</option>
+                                                        {% elif session['programme_levels'] == 3 %}
+                                                            <option>-- Bachelor --</option>
+                                                        {% elif session['programme_levels'] == 2 %}
+                                                            <option>-- Master --</option>
+                                                        {% elif session['programme_levels'] == 1 %}
+                                                            <option>-- Doctor --</option>
+                                                        {% else %}
                                                         <option value="">-- Select Programme Level --</option>
-                                                        {% for level in programme_levels %}
-                                                        <option value="{{ level[0] }}">{{ level[1] }}</option>
-                                                        {% endfor %}
+                                                            {% for level in programme_levels %}
+                                                            <option value="{{ level[0] }}">{{ level[1] }}</option>
+                                                            {% endfor %}
+                                                        {% endif %}
                                                     </select>
                                                 </th>
-                                                {% endif %}
                                             {% endif %}
                                             </tr>
                                             {% if session['programme_levels']: %}
