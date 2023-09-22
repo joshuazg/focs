@@ -155,7 +155,7 @@ def coursesSingel(id):
         return render_template('error.html', error_message=str(e))
         
 @app.route('/compare', methods=['POST'])
-def compare_programs():
+def compare_prog():
     selected_programs = request.form.getlist('program_level')
 
     # Assuming 'selected_programs' is a list of program level values (e.g., ['Diploma', 'Bachelor'])
