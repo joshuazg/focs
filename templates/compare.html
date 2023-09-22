@@ -189,7 +189,7 @@
     </section>
 
     <!--====== PAGE BANNER PART ENDS ======-->
-
+    {{ session['compare_level']}}
     <!--====== EVENTS PART START ======-->
     <section id="event-singel" class="pt-120 pb-120 gray-bg">
         <div class="container">
@@ -210,13 +210,13 @@
                                                     <th width="300px">
                                                         <select name="programme_level" id="programme_level" disabled>
                                                             {% if session['compare_level'] == '4': %}
-                                                            <option>-- Diploma --</option>
+                                                            <option value="4">-- Diploma --</option>
                                                             {% elif session['compare_level'] == '3': %}
-                                                            <option>-- Bachelor --</option>
+                                                            <option value="3">-- Bachelor --</option>
                                                             {% elif session['compare_level'] == '2': %}
-                                                            <option>-- Master --</option>
+                                                            <option value="2">-- Master --</option>
                                                             {% elif session['compare_level'] == '1': %}
-                                                            <option>-- Doctor --</option>
+                                                            <option value="1">-- Doctor --</option>
                                                             {% else %}
                                                             <option value="">-- Select Programme Level --</option>
                                                             {% for level in programme_levels %}
@@ -241,7 +241,7 @@
                                             </tr>
                                             <!--Programme-->
                                             {% if session['compare_level']: %} 
-                                            <tr> 
+                                                <tr> 
                                                     <th>
                                                         <labelfor="programme,programme1">Select a programme:</label></th>
                                                     <td>
@@ -260,24 +260,24 @@
                                                             {% endfor %}
                                                         </select>
                                                     </td>
-                                                {% else %}
+                                            {% else %}
                                                     <th>
                                                         <labelfor="programme,programme1">Select a programme:</label></th>
                                                     <td>
                                                         <select name="programme" id="programme" disabled>
                                                             {% for program_details in programme_details %}
-                                                            <option>{{ program_details[2] }}</option>
+                                                            <option value="">{{ program_details[2] }}</option>
                                                             {% endfor %}
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select name="programme1" id="programme1" disabled>
                                                             {% for program_details1 in programme_details1 %}
-                                                            <option>{{ program_details1[2] }}</option>
+                                                            <option value="">{{ program_details1[2] }}</option>
                                                             {% endfor %}
                                                         </select>
                                                     </td>
-                                            </tr>
+                                                </tr>
                                             {% endif %}
                                             <!--Programme Fees (Local)-->
                                             {% if session['compare_prog'] and session['compare_prog1']: %}
@@ -334,7 +334,6 @@
                                             </div>
                                         </div> <!-- row -->
                                     </form>
-                                    {{ session['compare_level']}}
                                 </div>
                             </div>
                         </div> <!-- events left -->
