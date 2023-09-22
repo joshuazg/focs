@@ -7,6 +7,7 @@
     <h1>Program Comparison</h1>
 
     <form action="/compare" method="post">
+    #Programme Level
     <label for="programme_level">Select a programme level:</label>
     <select name="programme_level" id="programme_level">
         <option value="">-- Select Programme Level --</option>
@@ -15,6 +16,7 @@
         {% endfor %}
     </select>
 
+    #Programme
     <label for="programme">Select a program:</label>
     <select name="programme" id="programme">
         <option value="">-- Select Programme --</option>
@@ -23,6 +25,16 @@
         {% endfor %}
     </select>
 
+    #Programme1
+    <label for="programme1">Select a program:</label>
+    <select name="programme1" id="programme1">
+        <option value="">-- Select Programme --</option>
+        {% for program1 in programmes1 %}
+            <option value="{{ program1[0] }}">{{ program1[2] }}</option>
+        {% endfor %}
+    </select>
+
+    #Programme Display
     <div>
         {% for program_details in programme_details %}
         <tr>
@@ -31,6 +43,19 @@
             <th>Programme Fees(International):{{ program_details[4] }}</th>
             <th>Programme Intake: {{ program_details[5] }}</th>
             <th>Programme Duration: {{ program_details[7] }}</th>
+        </tr>
+        {% endfor %}
+    </div>
+
+    #Programme1 Display
+    <div>
+        {% for program_details1 in programme_details1 %}
+        <tr>
+            <th>Programme Name: {{ program_details1[2] }}</th>
+            <th>Programme Fees(Local):{{ program_details1[3] }}</th>
+            <th>Programme Fees(International):{{ program_details1[4] }}</th>
+            <th>Programme Intake: {{ program_details1[5] }}</th>
+            <th>Programme Duration: {{ program_details1[7] }}</th>
         </tr>
         {% endfor %}
     </div>
