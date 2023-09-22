@@ -204,7 +204,7 @@
                                         <table class="table">
                                             <!--Programme Level-->
                                             <tr class="bg-light">
-                                            {% if session['programme_levels']: %}
+                                            {% if session['compare_level']: %}
                                                 <th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
                                                     <select name="programme_level" id="programme_level" disabled>
@@ -224,8 +224,8 @@
                                                         {% endif %}
                                                     </select>
                                                 </th>
-					                           {% else: %}
-						                        <th><label for="programme_level">Select a programme level:</label></th>
+					   	{% else: %}
+						<th><label for="programme_level">Select a programme level:</label></th>
                                                 <th width="300px">
                                                     <select name="programme_level" id="programme_level" onchange="getProgrammeLevel(this)">
                                                         <option value="">-- Select Programme Level --</option>
@@ -236,7 +236,7 @@
                                                 </th>		
                                             {% endif %}
                                             </tr>
-                                            {% if session['programme_levels']: %}
+                                            {% if session['compare_level']: %}
                                             <tr>
                                                 <!--Programme-->
                                                 <th><label for="programme,programme1">Select a programme:</label></th>
