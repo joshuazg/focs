@@ -266,14 +266,14 @@
                                                     <td>
                                                         <select name="programme" id="programme" disabled>
                                                             {% for program_details in programme_details %}
-                                                            <option value="">{{ program_details[2] }}</option>
+                                                            <option value="{{ program_details[1] }}">{{ program_details[2] }}</option>
                                                             {% endfor %}
                                                         </select>
                                                     </td>
                                                     <td>
                                                         <select name="programme1" id="programme1" disabled>
                                                             {% for program_details1 in programme_details1 %}
-                                                            <option value="">{{ program_details1[2] }}</option>
+                                                            <option value="{{ program_details1[1] }}">{{ program_details1[2] }}</option>
                                                             {% endfor %}
                                                         </select>
                                                     </td>
