@@ -11,7 +11,7 @@
     <select name="program_level" id="program_level">
         <option value="">-- Select Program Level --</option>
         {% for level in program_levels %}
-            <option value="{{ level.id }}">{{ level.name }}</option>
+            <option value="{{ level[0] }}">{{ level[1] }}</option>
         {% endfor %}
     </select>
 
@@ -19,7 +19,7 @@
     <select name="program" id="program">
         <option value="">-- Select Program --</option>
         {% for program in programs %}
-            <option value="{{ program.id }}">{{ program.name }}</option>
+            <option value="{{ program[0] }}">{{ program[2] }}</option>
         {% endfor %}
     </select>
 
